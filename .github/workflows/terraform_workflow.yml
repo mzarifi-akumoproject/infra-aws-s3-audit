@@ -1,4 +1,4 @@
-name: EC2 infra-aws-s3-audit
+name: EC2 Terraform
 # Triggers the workflow on:
 # - Pull requests to the 'main' branch when opened or updated
 # - Push events to the 'main' branch
@@ -30,7 +30,7 @@ jobs:
     needs: set-env                                                  # Depends on the 'set-env' job to get the environment output
     uses: akumoproject/centralized-workflows/.github/workflows/terraform_deployment.yml@main  # Reuses a workflow from another repository using the 'uses' keyword
     with:
-      terraform-directory: ./terraform                          # Path to the Terraform module directory (should be updated based on your service/module)
+      terraform-directory: ./terraform                              # Path to the Terraform module directory (should be updated based on your service/module)
       s3-bucket: project11-infra-${{ needs.set-env.outputs.environment }}-artifacts-s3  # Name of the centralized S3 bucket, constructed using the environment value
       env: ${{ needs.set-env.outputs.environment }}                 # Passes the environment value from 'set-env' job
-    secrets: inherit                                                # Inherits secrets defined in the centralized workflow repository
+    secrets: inherit                                                # Inherits secrets defined in the centralized workflow repositorygit
