@@ -1,1 +1,3 @@
 .terraform/
+echo ".DS_Store" >> .gitignore
+git add .gitignore
